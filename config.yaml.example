@@ -1,0 +1,117 @@
+wifis:
+- ssid: kanthaus
+  mode: ap
+  network: lan
+  encryption: wpa2+ccmp
+  auth_port: 1812
+  auth_secret: blabla
+  auth_server: 192.168.178.2
+  dynamic_vlan: 1
+  vlan_tagged_interface: eth0
+  vlan_bridge: br-vlan
+  vlan_naming: 0
+  dtim_period: 5
+  ieee80211r: 1
+  mobility_domain: 1230
+  ft_over_ds: 1
+  ft_psk_generate_local: 0
+  pmk_r1_push: 1
+  ft_bridge: br-lan
+  ft_exchange_aes: 256bitAESHEXKEY
+- ssid: wuppdays_slow
+  mode: ap
+  network: lan
+  encryption: psk2
+  key: a_very_secure_psk
+  ieee80211r: 1
+  mobility_domain: 1231
+  ft_psk_generate_local: 1
+  dtim_period: 5
+- ssid: wuppdays
+  mode: ap
+  network: lan
+  encryption: psk2
+  key: another_very_secure_PSK
+  ieee80211r: 1
+  mobility_domain: 1232
+  ft_psk_generate_local: 1
+  dtim_period: 5
+accesspoints:
+- name: dragon-k20-1
+  radios:
+    - name: radio0
+      channel: 52
+      path: pci0000:00/0000:00:00.0
+      hwmode: 11a
+      htmode: VHT80
+      wifis:
+        - ssid: kanthaus
+          bssid: 30:B5:C2:75:97:05
+        - ssid: wuppdays_slow
+          bssid: 32:B5:C2:75:97:05
+        - ssid: wuppdays
+          bssid: 34:B5:C2:75:97:05 
+    - name: radio1
+      channel: 11
+      path: platform/ahb/ahb:apb/18100000.wmac
+      hwmode: 11g
+      htmode: HT40
+      wifis:
+        - ssid: kanthaus
+          bssid: 32:B5:C2:75:97:06
+        - ssid: wuppdays_slow
+          bssid: 32:B5:C2:75:97:06
+        - ssid: wuppdays
+          bssid: 34:B5:C2:75:97:06
+- name: dragon-k20-outside
+  radios:
+    - name: radio0
+      channel: 36
+      path: pci0000:00/0000:00:00.0
+      hwmode: 11a
+      htmode: VHT80
+      wifis:
+        - ssid: kanthaus
+          bssid: 30:B5:C2:E4:A4:E5
+        - ssid: wuppdays_slow
+          bssid: 32:B5:C2:E4:A4:E5
+        - ssid: wuppdays
+          bssid: 34:B5:C2:E4:A4:E5
+    - name: radio1
+      channel: 6
+      path: platform/ahb/ahb:apb/18100000.wmac
+      hwmode: 11g
+      htmode: HT40
+      wifis:
+        - ssid: kanthaus
+          bssid: 30:B5:C2:E4:A4:E6
+        - ssid: wuppdays_slow
+          bssid: 32:B5:C2:E4:A4:E6
+        - ssid: wuppdays
+          bssid: 34:B5:C2:E4:A4:E6
+- name: dragon-k22-1
+  radios:
+    - name: radio0
+      channel: 36
+      path: pci0000:00/0000:00:00.0
+      hwmode: 11a
+      htmode: VHT80
+      wifis:
+        - ssid: kanthaus
+          bssid: E8:DE:27:83:4F:1D
+        - ssid: wuppdays_slow
+          bssid: EA:DE:27:83:4F:1D
+        - ssid: wuppdays
+          bssid: EC:DE:27:83:4F:1D
+    - name: radio1
+      channel: 1
+      path: platform/ahb/ahb:apb/18100000.wmac
+      hwmode: 11g
+      htmode: HT40
+      wifis:
+        - ssid: kanthaus
+          bssid: E8:DE:27:83:4F:1E
+        - ssid: wuppdays_slow
+          bssid: EA:DE:27:83:4F:1E
+        - ssid: wuppdays
+          bssid: EC:DE:27:83:4F:1E
