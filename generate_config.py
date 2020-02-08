@@ -103,8 +103,7 @@ for radio in ap['radios']:
     c.append_config_section('wifi-device', device)
     c.append_config_option('type', 'mac80211')
     c.append_config_option('legacy_rates', '0')
-    c.append_config_option('country', 'DE')
-    copy_options = ['htmode', 'channel', 'path', 'hwmode']
+    copy_options = ['htmode', 'channel', 'path', 'hwmode', 'country', 'txpower']
     for opt in copy_options:
         if opt in radio:
             c.append_config_option(opt, radio[opt])
