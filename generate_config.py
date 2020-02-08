@@ -98,6 +98,7 @@ if not ap:
 
 c = Config()
 radio_i = 0
+wifinet_i = 0
 for radio in ap['radios']:
     device = 'radio{}'.format(radio_i)
     c.append_config_section('wifi-device', device)
@@ -110,7 +111,8 @@ for radio in ap['radios']:
             c.append_config_option(opt, radio[opt])
     for wifi in radio['wifis']:
         id = wifi['ssid']
-        c.append_config_section('wifi-iface')
+        c.append_config_section('wifi-iface', "wifinet{}".format(wifinet_i))
+        wifinet_i += 1;
         c.append_config_option('device', device)
         c.append_config_option('bssid', wifi['bssid'])
         copy_options = ['mode', 'network', 'encryption', 'auth_port', 'auth_secret', 'auth_server', 'dynamic_vlan', 'vlan_tagged_interface', 'vlan_bridge', 'vlan_naming',
