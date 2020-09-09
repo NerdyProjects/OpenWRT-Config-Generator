@@ -115,7 +115,7 @@ for radio in ap['radios']:
         c.append_config_option('device', device)
         c.append_config_option('bssid', wifi['bssid'])
         copy_options = ['mode', 'network', 'encryption', 'auth_port', 'auth_secret', 'auth_server', 'dynamic_vlan', 'vlan_tagged_interface', 'vlan_bridge', 'vlan_naming',
-    'dtim_period', 'ieee80211r', 'mobility_domain', 'ft_over_ds', 'ft_psk_generate_local', 'pmk_r1_push', 'ft_bridge', 'key', 'ssid', 'rsn_preauth']
+    'dtim_period', 'ieee80211r', 'mobility_domain', 'ft_over_ds', 'ft_psk_generate_local', 'pmk_r1_push', 'ft_bridge', 'key', 'ssid', 'rsn_preauth', 'macfilter']
         for opt in copy_options:
             if opt in wifi_config[id]:
                 c.append_config_option(opt, wifi_config[id][opt])
@@ -126,6 +126,9 @@ for radio in ap['radios']:
                 c.append_config_list_item('r0kh', i)
             for i in r1kh:
                 c.append_config_list_item('r1kh', i)
+        if 'maclist' in wifi_config[id]:
+            for m in wifi_config[id]['maclist']:
+                c.append_config_list_item('maclist', m)
     radio_i += 1
 
 
